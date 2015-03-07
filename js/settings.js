@@ -4,10 +4,10 @@ define(function() {
 		width: screen.width,
 		height: screen.height,
 		margin: {
-			top: 30,
+			top: 50,
 			bottom: 30,
 			left: 30,
-			right: 30
+			right: 110
 		},
 		colors: {
 			background: '#000000',

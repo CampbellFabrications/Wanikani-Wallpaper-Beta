@@ -15,46 +15,74 @@
 				<label class="fixed-width-label" for="form-width">Width</label><input type="number" id="form-width" placeholder="width">
 				<label class="fixed-width-label" for="form-height">Height</label><input type="number" id="form-height" placeholder="height"><br>
 				<div id="special-settings">
-				<h5>This wallpaper generator also outputs to the console; the character, and meaning for each of the items<h5>
+					<h5>This wallpaper generator also outputs to the console; the character, and meaning for each of the items<h5>
+						<h6></h6>
 						<h3>Option List</h3>
 						<label for="kanjiOption">Choose which list to read from.</label><br/>
 						<input type="radio" name="listOption" id="kanjiOption" checked/>Kanji<br/>
-						<input type="radio" name="listOption" id="vocabOption"/>Vocabulary -- debug only<br/>
+						<input type="radio" name="listOption" id="vocabOption"/>Vocabulary -- Vocab Dump Only<br/>
 						<input type="radio" name="listOption" id="radicalOption"/>Radicals</br>
 					</div><br/>
-				<input type="checkbox" id="show-advanced"> <label for="show-advanced">Show Advanced Settings</label><br>
-				<div id="advanced-settings">
-					<h2>Advanced settings</h2>
-					<h3>Margins</h3>
-					<label class="fixed-width-label" for="form-margin-top">Top</label><input id="form-margin-top" type="number" placeholder="top margin"><br>
-					<label class="fixed-width-label" for="form-margin-bottom">Bottom</label><input id="form-margin-bottom" type="number" placeholder="bottom margin"><br>
-					<label class="fixed-width-label" for="form-margin-left">Left</label><input id="form-margin-left" type="number" placeholder="left margin"><br>
-					<label class="fixed-width-label" for="form-margin-right">Right</label><input id="form-margin-right" type="number" placeholder="right margin"><br>
+					<input type="checkbox" id="show-advanced"> <label for="show-advanced">Show Advanced Settings</label><br>
+					<div id="advanced-settings">
+						<h2>Advanced settings</h2>
+						<h3>Margins</h3>
+						<label class="fixed-width-label" for="form-margin-top">Top</label><input id="form-margin-top" type="number" placeholder="top margin"><br>
+						<label class="fixed-width-label" for="form-margin-bottom">Bottom</label><input id="form-margin-bottom" type="number" placeholder="bottom margin"><br>
+						<label class="fixed-width-label" for="form-margin-left">Left</label><input id="form-margin-left" type="number" placeholder="left margin"><br>
+						<label class="fixed-width-label" for="form-margin-right">Right</label><input id="form-margin-right" type="number" placeholder="right margin"><br>
 
-					<h3>Colors</h3>
-					<label class="fixed-width-label" for="form-color-background">Background</label><input id="form-color-background" type="color"><br>
-					<label class="fixed-width-label" for="form-color-unseen">Unseen</label><input id="form-color-unseen" type="color"><br>
-					<label class="fixed-width-label" for="form-color-apprentice">Apprentice</label><input id="form-color-apprentice" type="color"><br>
-					<label class="fixed-width-label" for="form-color-guru">Guru</label><input id="form-color-guru" type="color"><br>
-					<label class="fixed-width-label" for="form-color-master">Master</label><input id="form-color-master" type="color"><br>
-					<label class="fixed-width-label" for="form-color-enlighten">Enlighten</label><input id="form-color-enlighten" type="color"><br>
-					<label class="fixed-width-label" for="form-color-burned">Burned</label><input id="form-color-burned" type="color"><br>
-				</div>
-				<input type="submit" id="submit-api" value="REQUEST">
-			</form>
-		</div>
-		<div id="right-column">
-			<h2>Result</h2>
-			<div id="message">
-				<p>Ready to begin</p>
+						<h3>Colors</h3>
+						<label class="fixed-width-label" for="form-color-background">Background</label><input id="form-color-background" type="color"><br>
+						<label class="fixed-width-label" for="form-color-unseen">Unseen</label><input id="form-color-unseen" type="color"><br>
+						<label class="fixed-width-label" for="form-color-apprentice">Apprentice</label><input id="form-color-apprentice" type="color"><br>
+						<label class="fixed-width-label" for="form-color-guru">Guru</label><input id="form-color-guru" type="color"><br>
+						<label class="fixed-width-label" for="form-color-master">Master</label><input id="form-color-master" type="color"><br>
+						<label class="fixed-width-label" for="form-color-enlighten">Enlighten</label><input id="form-color-enlighten" type="color"><br>
+						<label class="fixed-width-label" for="form-color-burned">Burned</label><input id="form-color-burned" type="color"><br>
+					</div>
+					<input type="submit" id="submit-api" value="REQUEST">
+				</form>
 			</div>
+			<div id="right-column">
+				<h2>Result</h2>
+				<div id="message">
+					<p>Ready to begin</p>
+				</div>
 
+			</div>
+			<div class="footer">
+				<!--
+				<p>
+					<label for="meaningResults">Meaning Results</label>
+					<input type="textarea" name="meaningResults" id="meaningResults"/>
+				</p>
+				<p>
+					<label for="characterResults">Character Results</label>
+					<input type="textarea" name="characterResults" id="characterResults"/>
+				</p>
+				<p>
+					<label for="vocabResults">Vocabulary Results</label>
+					<input type="textarea" name="vocabResults" id="vocabResults"/>
+				</p>
+				-->
+				<p>
+					Kanji<br/>
+					<div id="outputTestResults">
+					</div>
+				</p>
+				<p>
+					Radicals<br/>
+					<div id="outputTestResults2">
+					</div>
+				</p>
+				<p>
+					Vocabulary<br/>
+					<div id="outputTestResults3">
+					</div>
+				</p>
+			</div>
 		</div>
-		<div class="footer">
-			<p>
-			</p>
-		</div>
-	</div>
-	<script data-main="js/main" src="js/require.js"></script>
-</body>
-</html>
+		<script data-main="js/main" src="js/require.js"></script>
+	</body>
+	</html>

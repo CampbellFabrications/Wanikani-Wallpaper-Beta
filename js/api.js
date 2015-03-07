@@ -1,13 +1,23 @@
-define(['settings'], function(settings) {
+define(['settings'], function(settings)
+{
 	'use strict';
 	var userData_ = {};
 	var characters_ = {};
+
+	// custom variables
+	
 	var meanings_ = {};
+	var vocabulary_ = {};
+
 	var meaningsList = "";
 	var characterList = "";
-
-	var vocabulary_ = {};
 	var vocabularyList = "";
+	
+	var resultsTest = "";
+	var resultsTest2 = "";
+	var resultsTest3 = "";
+
+	// end custom variables
 
 	return {
 		load: function(onComplete) {
@@ -32,38 +42,104 @@ define(['settings'], function(settings) {
 					return;
 				}
 				userData_ = data.user_information;
-				console.clear();
-				if(document.getElementById('kanjiOption').checked || document.getElementById('radicalOption').checked)
+				if(document.getElementById('kanjiOption').checked)
 				{
-					data.requested_information.forEach(function (character) {
+					resultsTest = "";
+					data.requested_information.forEach(function (character)
+					{
 						characters_[character.character] = character;
 						characterList += character.character + " ";
+						if(character.user_specific == null)
+						{
+							resultsTest += '<span class="unseen">' + character.character + '</span> ';
+							//console.log("SRS unseen");
+						}
+						else
+						{
+							resultsTest += '<span class="' + character.user_specific.srs + '">' + character.character + '</span> '; 
+							//console.log("SRS " + character.user_specific.srs);
+						}
 					});
-					console.log(characterList);
-
-					data.requested_information.forEach(function (meaning) {
+					//console.log(characterList);
+					
+					data.requested_information.forEach(function (meaning)
+					{
 						meanings_[meaning.meaning] = meaning;
 						meaningsList += meaning.meaning + " ";
 					});
-					console.log(meaningsList);
+				}
+				else if(document.getElementById('radicalOption').checked)
+				{
+					resultsTest2 = "";
+					data.requested_information.forEach(function (character)
+					{
+						characters_[character.character] = character;
+						characterList += character.character + " ";
+						if(character.character == null)
+						{
+							if(character.user_specific == null)
+							{
+								resultsTest2 += '<span class="image-unseen">' + '<img src="' + character.image + '"/></span>';
+								//console.log("SRS unseen");
+							}
+							else
+							{
+								resultsTest2 += '<span class="' + character.user_specific.srs + '-unseen">' + '<img src="' + character.image + '"/></span>';
+								//console.log("SRS " + character.user_specific.srs);
+							}
+						}
+						else
+						{
+							if(character.user_specific == null)
+							{
+								resultsTest2 += '<span class="unseen">' + character.character + '</span> ';
+								//console.log("SRS unseen");
+							}
+							else
+							{
+								resultsTest2 += '<span class="' + character.user_specific.srs + '">' + character.character + '</span> '; 
+								//console.log("SRS " + character.user_specific.srs);
+							}
+						}
+					});
 				}
 				else
 				{
+					resultsTest3 = "";
 					data.requested_information.general.forEach(function (character)
 					{
-						vocabulary_[character.character] = character;
-						vocabularyList += character.character + " ";
+						//vocabulary_[character.character] = character;
+						//vocabularyList += character.character + " ";
+						if(character.user_specific == null)
+						{
+							resultsTest3 += '<span class="unseen">' + character.character + '</span> ';
+							//console.log("SRS unseen");
+						}
+						else
+						{
+							resultsTest3 += '<span class="' + character.user_specific.srs + '">' + character.character + '</span> '; 
+							//console.log("SRS " + character.user_specific.srs);
+						}
 					});
-					console.log(vocabularyList);
+					//console.log(vocabularyList);
 
-					data.requested_information.general.forEach(function (meaning) {
+					data.requested_information.general.forEach(function (meaning)
+					{
 						meanings_[meaning.meaning] = meaning;
-						meaningsList += meaning.meaning + " ";
+						meaningsList += meaning.meaning + " | ";
 					});
-					console.log(meaningsList);
-				}
 
-				
+				}
+				//console.log(meaningsList);
+				//console.log("Complete Dump " + JSON.stringify(data.requested_information));
+				/*
+				document.getElementById('meaningResults').value = meaningsList;
+				document.getElementById('characterResults').value = characterList;
+				document.getElementById('vocabResults').value = vocabularyList;
+				*/
+				document.getElementById('outputTestResults').innerHTML = resultsTest;
+				document.getElementById('outputTestResults2').innerHTML = resultsTest2;
+				document.getElementById('outputTestResults3').innerHTML = resultsTest3;
 				onComplete();
 			});
 },
