@@ -70,8 +70,8 @@ define(['settings', 'order'], function(settings, order) {
 
 			var dataURL = canvasElem.toDataURL('image/png');
 
-			//document.getElementsByTagName('body')[0].style['background-image'] = "url(" + dataURL + ")";
-			//document.getElementsByTagName('body')[0].style['backgroundImage'] = "url(" + dataURL + ")";
+			document.getElementsByTagName('body')[0].style['background-image'] = "url(" + dataURL + ")";
+			document.getElementsByTagName('body')[0].style['backgroundImage'] = "url(" + dataURL + ")";
 
 			var img = document.createElement('img');
 			img.src = dataURL;
