@@ -1,6 +1,6 @@
 Wanikani-Wallpaper-Beta
 ====================
-
+Visit http://pyronyzen.github.io/Wanikani-Wallpaper-Beta/index.html to test
 This Wanikani Wallpaper Generator is a modified version of Hexagenic's Wallpaper Generator.
 This version offers advanced functionality and debugging of a user's Wanikani data.
 
