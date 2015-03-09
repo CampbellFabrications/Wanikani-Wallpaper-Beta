@@ -79,12 +79,12 @@ define(['settings'], function(settings)
 						{
 							if(character.user_specific == null)
 							{
-								resultsTest2 += '<span class="image-unseen">' + '<img src="' + character.image + '"/></span>';
+								resultsTest2 += '<span class="image-unseen">' + '<img src="' + character.image + '" width="16px" height="16px"/></span>';
 								//console.log("SRS unseen");
 							}
 							else
 							{
-								resultsTest2 += '<span class="' + character.user_specific.srs + '-unseen">' + '<img src="' + character.image + '"/></span>';
+								resultsTest2 += '<span class="' + character.user_specific.srs + '-unseen">' + '<img src="' + character.image + '" width="16px" height="16px"/></span>';
 								//console.log("SRS " + character.user_specific.srs);
 							}
 						}
