@@ -16,20 +16,17 @@ define(['settings', 'order'], function(settings, order) {
 	}
 
 	function findBestFit(width, height, elementsToFit) {
+		order.data = order.data.split(' ');
 		var sqrt = Math.ceil(Math.sqrt(elementsToFit)) + 1;
-
 		var aspectRatio = width / height;
-
 		var y = Math.ceil(sqrt / ((1 + aspectRatio)/2));
 		var x = Math.ceil(elementsToFit / y);
-
 		var charWidth = width / x;
 		var charHeight = height / y;
 		var fontSize = Math.min(charWidth, charHeight);
 		var totalArea = width * height;
 		var coveredArea = elementsToFit * Math.pow(fontSize, 2);
 		var fit = coveredArea / totalArea;
-
 		return {fit: fit, w: x, h: y, fontSize: fontSize, charWidth: charWidth, charHeight: charHeight};
 	}
 
@@ -50,22 +47,29 @@ define(['settings', 'order'], function(settings, order) {
 
 			ctx.fillStyle = settings.colors.background;
 			ctx.fillRect(0, 0, settings.width, settings.height);
-			
 			ctx.font = '' + Math.floor(bestFit.fontSize) + 'px ' + fonts;
 			ctx.textBaseline = 'top';
-
 			var offset = -Math.floor(bestFit.fontSize) * 0.2;
 			// needed to perfectly align the text.
 			
-			var i, x, y, c;
-			for (i = 0; i < order.data.length; i++) {
-				c = order.data[i];
-				//THIS CODE NEEDS EDITING
+			var i = 0, x, y, c;
+			
+			for (k in order.data)
+			//for (i = 0; i < order.data.length; i++)
+			{
+				c = order.data[k];
 				ctx.fillStyle = getColor(characters[c]);
 
 				y = margin.top + Math.floor(i / bestFit.w) * bestFit.charHeight + offset;
 				x = margin.left + (i % bestFit.w) * bestFit.charWidth;
+				
 				ctx.fillText(c, Math.floor(x), Math.floor(y));
+				
+				for(var j = 1; j < order.data[k].length; j++)
+				{
+					i++;
+				}
+				i++;
 			}
 
 			var dataURL = canvasElem.toDataURL('image/png');

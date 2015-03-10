@@ -1,4 +1,4 @@
-define(['settings'], function(settings)
+define(['settings','order'], function(settings,order)
 {
 	'use strict';
 	var userData_ = {};
@@ -16,7 +16,6 @@ define(['settings'], function(settings)
 	var resultsTest = "";
 	var resultsTest2 = "";
 	var resultsTest3 = "";
-
 	// end custom variables
 
 	return {
@@ -45,6 +44,8 @@ define(['settings'], function(settings)
 				if(document.getElementById('kanjiOption').checked)
 				{
 					resultsTest = "";
+					characterList = "";
+					characters_ = {};
 					data.requested_information.forEach(function (character)
 					{
 						characters_[character.character] = character;
@@ -67,10 +68,13 @@ define(['settings'], function(settings)
 						meanings_[meaning.meaning] = meaning;
 						meaningsList += meaning.meaning + " ";
 					});
+					order.data = characterList;
 				}
 				else if(document.getElementById('radicalOption').checked)
 				{
 					resultsTest2 = "";
+					characterList = "";
+					characters_ = {};
 					data.requested_information.forEach(function (character)
 					{
 						characters_[character.character] = character;
@@ -84,7 +88,7 @@ define(['settings'], function(settings)
 							}
 							else
 							{
-								resultsTest2 += '<span class="' + character.user_specific.srs + '-unseen">' + '<img src="' + character.image + '" width="16px" height="16px"/></span>';
+								resultsTest2 += '<span class="' + character.user_specific.srs + '">' + '<img src="' + character.image + '" width="16px" height="16px"/></span>';
 								//console.log("SRS " + character.user_specific.srs);
 							}
 						}
@@ -102,14 +106,17 @@ define(['settings'], function(settings)
 							}
 						}
 					});
+					order.data = characterList;
 				}
 				else
 				{
 					resultsTest3 = "";
+					characterList = "";
+					characters_ = {};
 					data.requested_information.general.forEach(function (character)
 					{
-						//vocabulary_[character.character] = character;
-						//vocabularyList += character.character + " ";
+						characters_[character.character] = character;
+						characterList += character.character + " ";
 						if(character.user_specific == null)
 						{
 							resultsTest3 += '<span class="unseen">' + character.character + '</span> ';
@@ -128,7 +135,7 @@ define(['settings'], function(settings)
 						meanings_[meaning.meaning] = meaning;
 						meaningsList += meaning.meaning + " | ";
 					});
-
+					order.data = characterList;
 				}
 				//console.log(meaningsList);
 				//console.log("Complete Dump " + JSON.stringify(data.requested_information));
