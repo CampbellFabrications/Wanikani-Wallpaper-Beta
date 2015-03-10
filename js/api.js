@@ -138,7 +138,6 @@ define(['settings','order'], function(settings,order)
 					order.data = characterList;
 				}
 				//console.log(meaningsList);
-				//console.log("Complete Dump " + JSON.stringify(data.requested_information));
 				/*
 				document.getElementById('meaningResults').value = meaningsList;
 				document.getElementById('characterResults').value = characterList;
